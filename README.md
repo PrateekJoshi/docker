@@ -26,7 +26,7 @@
 
 ## Docket architecture
 
-![Docker architecture](./resources/docker_architecture.JPG)
+![Docker architecture](./resources/docker_architecture.jpg)
 
 ## Docker images
 
@@ -68,15 +68,15 @@
 ## Building our first container
 
 ```
-docker run -i -t ubuntu -name my_ubuntu_container /bin/bash
+docker run -i -t --rm -v /etc/yum.conf:/etc/yum.conf  --name my_centos_container centos:7 /bin/bash
 ```
 
 Now run following commands inside this container,
 
 ```
-root@f7cbdac22a02:/# hostname
-root@f7cbdac22a02:/# ls
-root@f7cbdac22a02:/# apt-get install vim
+root@<container_id>:/# hostname
+root@<container_id>:/# ls
+root@<container_id>:/# yum install -y vim
 ```
 
 #### To view list images locally
@@ -133,7 +133,7 @@ is called the base image.
 - Finally, when a container is launched from an image.
 - Docker mounts a read-write filesystem on top of any layers below. This is where whatever processes we want our Docker container to run will execute.
 
-![Docker Image filesystem](./resources/docker_image_filesyste.jpg)
+![Docker Image filesystem](./resources/docker_image_filesystem.jpg)
 
 ### Searching for images
 
@@ -255,7 +255,7 @@ docker run --name <container_name> -u root --rm -p 8080:8080 -p 50000:50000  -v 
 
 ## Dockerizing a Spring MVC Web Application
 
-![Docker and Spring](./resources/docker_spring.JPG)
+![Docker and Spring](./resources/docker_spring.jpg)
 
 1.Clone the git repo
 
